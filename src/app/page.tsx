@@ -28,7 +28,7 @@ export default function Home() {
           setIsFadingToWhite(false);
         }, 3000); // Wait 3s while white before resetting
       }, 5000); // Show crash screen for 5s
-      
+
       return () => clearTimeout(timer);
     }
   }, [isCrashed, resetChaos, sm]);
@@ -46,7 +46,7 @@ export default function Home() {
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-8 animate-pulse">ARE YOU REALLY HUMAN?</h1>
               <p className="text-red-800 text-lg">SYSTEM_FATAL_EXCEPTION: IDENTITY_NOT_FOUND</p>
-              
+
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
               <div className="scanline" style={{ background: 'rgba(220, 38, 38, 0.2)' }} />
             </motion.div>
@@ -55,7 +55,7 @@ export default function Home() {
 
         <AnimatePresence>
           {isFadingToWhite && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="absolute inset-0 bg-white z-50"
@@ -70,10 +70,10 @@ export default function Home() {
   return (
     <main className={cn(
       "relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden transition-colors duration-1000",
-      stage === 1 ? "bg-slate-50" : 
-      stage === 2 ? "bg-slate-100" : 
-      stage === 3 ? "bg-slate-200" : 
-      "bg-zinc-950"
+      stage === 1 ? "bg-slate-50" :
+        stage === 2 ? "bg-slate-100" :
+          stage === 3 ? "bg-slate-200" :
+            "bg-zinc-950"
     )}>
       <PopupSystem />
       {/* Background Grid */}
@@ -103,7 +103,7 @@ export default function Home() {
 
       <div className="relative z-10 w-full flex flex-col items-center space-y-12">
         <header className="text-center space-y-4">
-          <motion.h1 
+          <motion.h1
             layout
             className={cn(
               "text-4xl md:text-5xl font-bold tracking-tight transition-all duration-500",
@@ -113,7 +113,7 @@ export default function Home() {
           >
             {stage === 4 ? "SYSTEM_FAILURE" : "AreYouHuman?"}
           </motion.h1>
-          <motion.p 
+          <motion.p
             layout
             className={cn(
               "text-slate-500 max-w-md mx-auto transition-colors",
@@ -149,7 +149,7 @@ export default function Home() {
           © 2026 OMNICORP NEURAL SYSTEMS | ALL RIGHTS OBSERVED
         </div>
         <div className="flex items-center space-x-4 pointer-events-auto">
-          <button 
+          <button
             onClick={() => {
               const sm = require("@/lib/sound-manager").soundManager.getInstance();
               sm.toggleMute();
@@ -158,7 +158,7 @@ export default function Home() {
           >
             <Activity className="w-4 h-4" />
           </button>
-          <button 
+          <button
             onDoubleClick={resetChaos}
             className="text-[10px] text-slate-300 hover:text-slate-400 transition-colors cursor-help"
             title="Double click to re-initialize system"
@@ -179,7 +179,7 @@ function Metric({ label, value, color }: { label: string; value: number; color: 
         <span>{Math.round(value)}%</span>
       </div>
       <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${value}%` }}
           className={cn(

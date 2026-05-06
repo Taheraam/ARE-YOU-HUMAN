@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 
-type Stage = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10; // Added stage 5 for crash
+type Stage = 1 | 2 | 3 | 4 | 5;
 
 interface ChaosContextType {
   chaosLevel: number;
@@ -10,10 +10,12 @@ interface ChaosContextType {
   trustScore: number;
   captchaStep: number;
   isCrashed: boolean;
+  showMatrixRain: boolean;
   incrementChaos: (amount: number) => void;
   setTrustScore: (score: number | ((prev: number) => number)) => void;
   nextStep: () => void;
   triggerCrash: () => void;
+  triggerMatrixRain: (durationMs: number) => void;
   resetChaos: () => void;
 }
 
@@ -25,6 +27,7 @@ export const ChaosProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [stage, setStage] = useState<Stage>(1);
   const [captchaStep, setCaptchaStep] = useState(0);
   const [isCrashed, setIsCrashed] = useState(false);
+  const [showMatrixRain, setShowMatrixRain] = useState(false);
 
   // Sync stage with chaosLevel, but if crashed, force stage 5
   useEffect(() => {
@@ -60,12 +63,20 @@ export const ChaosProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setChaosLevel(100);
   }, []);
 
+  const triggerMatrixRain = useCallback((durationMs: number) => {
+    setShowMatrixRain(true);
+    setTimeout(() => {
+      setShowMatrixRain(false);
+    }, durationMs);
+  }, []);
+
   const resetChaos = useCallback(() => {
     setChaosLevel(0);
     setTrustScoreState(100);
     setStage(1);
     setCaptchaStep(0);
     setIsCrashed(false);
+    setShowMatrixRain(false);
     localStorage.removeItem("are-you-human-state");
   }, []);
 
@@ -101,10 +112,12 @@ export const ChaosProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         trustScore,
         captchaStep,
         isCrashed,
+        showMatrixRain,
         incrementChaos,
         setTrustScore,
         nextStep,
         triggerCrash,
+        triggerMatrixRain,
         resetChaos,
       }}
     >

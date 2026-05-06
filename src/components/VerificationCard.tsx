@@ -22,7 +22,7 @@ const STEPS = [
 
 
 export const VerificationCard: React.FC = () => {
-  const { chaosLevel, stage, captchaStep, incrementChaos, setTrustScore, nextStep, triggerCrash, isCrashed } = useChaos();
+  const { chaosLevel, stage, captchaStep, incrementChaos, setTrustScore, nextStep, triggerCrash, isCrashed, triggerMatrixRain } = useChaos();
   const [isChecked, setIsChecked] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -64,6 +64,11 @@ export const VerificationCard: React.FC = () => {
         triggerCrash();
       }, 3000);
       return;
+    }
+
+    // Trigger Matrix Rain on step 6 and 7
+    if (captchaStep === 6 || captchaStep === 7) {
+      triggerMatrixRain(2000);
     }
 
     // Normal progression logic
