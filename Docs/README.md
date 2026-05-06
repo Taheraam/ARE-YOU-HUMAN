@@ -1,0 +1,29 @@
+# AreYouHuman?
+
+An interactive frontend-only psychological CAPTCHA simulator.
+
+The website begins as a normal verification page but gradually becomes hostile, surreal, manipulative, and existential.
+
+The experience escalates through multiple chaos phases where the CAPTCHA system appears to become self-aware and suspicious of the user.
+
+Core themes:
+- internet absurdity
+- AI paranoia
+- digital identity
+- psychological manipulation
+- escalating chaos
+
+The user journey:
+Normal verification → discomfort → confusion → psychological warfare → total system collapse.
+
+The site should feel alive.
+
+The system should appear to:
+- analyze behavior
+- judge hesitation
+- predict actions
+- emotionally manipulate users
+- malfunction dynamically
+
+No backend required.
+Everything is simulated through frontend effects and theatrical UI behavior.
