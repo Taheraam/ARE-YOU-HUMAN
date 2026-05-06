@@ -3,6 +3,7 @@
 import { VerificationCard } from "@/components/VerificationCard";
 import { SystemDialogue } from "@/components/SystemDialogue";
 import { PopupSystem } from "@/components/PopupSystem";
+import { MatrixRain } from "@/components/MatrixRain";
 import { useChaos } from "@/context/chaos-context";
 import { useBehaviorTracker } from "@/hooks/use-behavior-tracker";
 import { motion, AnimatePresence } from "framer-motion";
@@ -73,8 +74,8 @@ export default function Home() {
       stage === 1 ? "bg-slate-50" :
         stage === 2 ? "bg-slate-100" :
           stage === 3 ? "bg-slate-200" :
-            "bg-zinc-950"
     )}>
+      <MatrixRain />
       <PopupSystem />
       {/* Background Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none">

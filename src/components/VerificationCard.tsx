@@ -60,15 +60,11 @@ export const VerificationCard: React.FC = () => {
 
     if (isFinalStep) {
       // The final step triggers the crash after a suspenseful loading
+      triggerMatrixRain(3000);
       setTimeout(() => {
         triggerCrash();
       }, 3000);
       return;
-    }
-
-    // Trigger Matrix Rain on step 6 and 7
-    if (captchaStep === 6 || captchaStep === 7) {
-      triggerMatrixRain(2000);
     }
 
     // Normal progression logic
